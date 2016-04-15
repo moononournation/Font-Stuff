@@ -211,8 +211,8 @@
         }
       }
     }
-    $("#font-set-code").html("<pre><code>/*<br>fontsetvalue:<br>"
-		+ fontSetValue
+    $("#font-set-code").html("<pre><code>/*<br>Design you own font:<br>https://github.com/moononournation/Font-Stuff/tree/master/FontDesignHtml<br>"
+    	+ "<br>fontsetvalue:<br>" + fontSetValue
 		+ "<br>*/<br>#include &lt;avr/pgmspace.h&gt;<br>"
 		+ "<br>#define FONT_WIDTH  " + $("#width-size").val()
 		+ "<br>#define FONT_HEIGHT " + $("#height-size").val()
@@ -243,13 +243,6 @@
       <label for="output-value">Output</label>
       <input type="text" id="output-value" size="16">
     </p>
-<textarea> !"#$%&'()*+,-./
-0123456789
-:;<=>?@
-ABCDEFGHIJKLMNOPQRSTUVWXYZ
-[\]^_`
-abcdefghijklmnopqrstuvwxyz
-{|}~</textarea>
     <p>
       <label for="font-set-input-value">Font Set Input</label>
       <input type="text" id="font-set-input-value" size="64">
