@@ -18,18 +18,19 @@
 
 #define WIDTH          12 // actual width = WIDTH * 2 = 24
 #define HEIGHT         5
+#define BITMAP_SIZE    (((WIDTH * HEIGHT) + 7) / 8)
 #define CHAR_GAP       1 // space for each character
-#define SCORLL_DELAY    200 // ms
+#define SCORLL_DELAY   100 // ms
 
 // please also config ws2812_config.h
 
 int8_t offset = WIDTH; // right most position
-uint8_t bitmap[((WIDTH * HEIGHT) + 7) / 8]; // ATtiny13A only have space to store mono
+uint8_t bitmap[BITMAP_SIZE]; // ATtiny13A only have space to store mono
 
-char msg[] = "HELLO WORLD!";
+char msg[] = "ARE YOU READY?";
 
 void clearBitmap() {
-	uint8_t idx = sizeof(bitmap);
+	uint8_t idx = BITMAP_SIZE;
 	while (idx--) {
 		bitmap[idx] = 0;
 	}
@@ -44,18 +45,15 @@ void setPixel(uint16_t i) {
 
 void write_char(int8_t pos, uint8_t c) {
   uint8_t data_offset = (c - 32) * (((FONT_WIDTH * FONT_HEIGHT) + 7) / 8);
-  uint8_t bit_offset = 7;
+  uint8_t cur_bit = 0;
   uint8_t data = 0;
   uint16_t i = 0;
   uint16_t j = 0;
 
   for (j = 0; j < (FONT_WIDTH * FONT_HEIGHT); j++) {
-    if (bit_offset == 7) {
-      data = pgm_read_byte(&font_data[data_offset]);
-      data_offset++;
-      bit_offset = 0;
-    } else {
-      bit_offset++;
+    if (!cur_bit) {
+      data = pgm_read_byte(&font_data[data_offset++]);
+      cur_bit = 0b10000000;
     }
     int8_t col = pos + (int8_t)(j / FONT_HEIGHT);
     if ((col >= 0) && (col < WIDTH)) {
@@ -66,10 +64,11 @@ void write_char(int8_t pos, uint8_t c) {
         i = (row * WIDTH) + col;
       }
 
-      if (data & (0b10000000 >> bit_offset)) {
+      if (data & cur_bit) {
         setPixel(i);
       }
     }
+    cur_bit >>= 1;
   }
 }
 
@@ -83,11 +82,11 @@ uint8_t getPixelColorFunction(uint8_t idx, uint8_t bit_mask, uint8_t brg_idx) {
 	if (bitmap[idx] & bit_mask) { // check LED should on or off
 		switch(brg_idx) {
 			case 0: // Blue
-				return (idx > 3) ? (idx - 4) : idx + 4;
+				return ((bit_mask >> 2) & 0b00001111) + idx;
 			case 1: // Red
-				return idx;
+				return ((bit_mask >> 5) & 0b00001111) + BITMAP_SIZE - idx - 1;
 			default: //2: Green
-				return 7 - idx;
+				return (bit_mask & 0b00011111);
 		}
 	} else { // LED off
 		return 0;
@@ -109,12 +108,12 @@ int main(void)
 		write_char(offset + (i * (FONT_WIDTH + CHAR_GAP)), msg[i]);
 	}
 
-    ws2812_set_leds_func_ptr(WIDTH * HEIGHT, getPixelColorFunction);
-
     offset--;
     if (offset < (-(FONT_WIDTH + CHAR_GAP) * (int8_t)sizeof(msg))) { // left most position
-      offset = WIDTH; // return to right most position
+		offset = WIDTH; // return to right most position
     }
+
+    ws2812_set_leds_func_ptr(WIDTH * HEIGHT, getPixelColorFunction);
 
     _delay_ms(SCORLL_DELAY);
   }
