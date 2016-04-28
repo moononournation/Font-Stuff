@@ -1,0 +1,789 @@
+
+main.o:     file format elf32-avr
+
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	67 c0       	rjmp	.+206    	; 0xd0 <__ctors_end>
+   2:	7f c0       	rjmp	.+254    	; 0x102 <__bad_interrupt>
+   4:	7e c0       	rjmp	.+252    	; 0x102 <__bad_interrupt>
+   6:	7d c0       	rjmp	.+250    	; 0x102 <__bad_interrupt>
+   8:	7c c0       	rjmp	.+248    	; 0x102 <__bad_interrupt>
+   a:	7b c0       	rjmp	.+246    	; 0x102 <__bad_interrupt>
+   c:	7a c0       	rjmp	.+244    	; 0x102 <__bad_interrupt>
+   e:	79 c0       	rjmp	.+242    	; 0x102 <__bad_interrupt>
+  10:	78 c0       	rjmp	.+240    	; 0x102 <__bad_interrupt>
+  12:	77 c0       	rjmp	.+238    	; 0x102 <__bad_interrupt>
+
+00000014 <__trampolines_end>:
+  14:	00 00       	nop
+  16:	47 40       	sbci	r20, 0x07	; 7
+  18:	46 20       	and	r4, r6
+  1a:	52 80       	ldd	r5, Z+2	; 0x02
+  1c:	45 c0       	rjmp	.+138    	; 0xa8 <__stack+0x9>
+  1e:	9b 22       	and	r9, r27
+  20:	54 ca       	rjmp	.-2904   	; 0xfffff4ca <__eeprom_end+0xff7ef4ca>
+  22:	44 00       	.word	0x0044	; ????
+  24:	54 40       	sbci	r21, 0x04	; 4
+  26:	06 c0       	rjmp	.+12     	; 0x34 <__trampolines_end+0x20>
+  28:	e5 00       	.word	0x00e5	; ????
+  2a:	25 48       	sbci	r18, 0x85	; 133
+  2c:	00 c0       	rjmp	.+0      	; 0x2e <__trampolines_end+0x1a>
+  2e:	21 08       	sbc	r2, r1
+  30:	00 40       	sbci	r16, 0x00	; 0
+  32:	1b 20       	and	r1, r11
+  34:	56 c0       	rjmp	.+172    	; 0xe2 <__do_copy_data+0xa>
+  36:	05 40       	sbci	r16, 0x05	; 5
+  38:	9f 42       	sbci	r25, 0x2F	; 47
+  3a:	8f c0       	rjmp	.+286    	; 0x15a <setPixel+0xc>
+  3c:	65 48       	sbci	r22, 0x85	; 133
+  3e:	ad e0       	ldi	r26, 0x0D	; 13
+  40:	6d c0       	rjmp	.+218    	; 0x11c <getPixelColorFunction+0x18>
+  42:	87 60       	ori	r24, 0x07	; 7
+  44:	55 7e       	andi	r21, 0xE5	; 229
+  46:	45 f8       	bld	r4, 5
+  48:	02 80       	ldd	r0, Z+2	; 0x02
+  4a:	02 c0       	rjmp	.+4      	; 0x50 <__SREG__+0x11>
+  4c:	03 a2       	std	Z+35, r0	; 0x23
+  4e:	52 94       	swap	r5
+  50:	03 a2       	std	Z+35, r0	; 0x23
+  52:	87 40       	sbci	r24, 0x07	; 7
+  54:	af 6a       	ori	r26, 0xAF	; 175
+  56:	7e 8a       	std	Y+22, r7	; 0x16
+  58:	af c0       	rjmp	.+350    	; 0x1b8 <write_char+0x42>
+  5a:	54 62       	ori	r21, 0x24	; 36
+  5c:	ae c0       	rjmp	.+348    	; 0x1ba <write_char+0x44>
+  5e:	ad 62       	ori	r26, 0x2D	; 45
+  60:	ad 20       	and	r10, r13
+  62:	74 6e       	ori	r23, 0xE4	; 228
+  64:	a9 2a       	or	r10, r25
+  66:	05 40       	sbci	r16, 0x05	; 5
+  68:	96 e0       	ldi	r25, 0x06	; 6
+  6a:	ab a2       	std	Y+35, r10	; 0x23
+  6c:	a8 42       	sbci	r26, 0x28	; 40
+  6e:	eb 2a       	or	r14, r27
+  70:	e9 aa       	std	Y+49, r14	; 0x31
+  72:	76 c8       	rjmp	.-3860   	; 0xfffff160 <__eeprom_end+0xff7ef160>
+  74:	af 00       	.word	0x00af	; ????
+  76:	76 ca       	rjmp	.-2836   	; 0xfffff564 <__eeprom_end+0xff7ef564>
+  78:	af 82       	std	Y+7, r10	; 0x07
+  7a:	4d e0       	ldi	r20, 0x0D	; 13
+  7c:	85 60       	ori	r24, 0x05	; 5
+  7e:	a0 6a       	ori	r26, 0xA0	; 160
+  80:	d2 e0       	ldi	r29, 0x02	; 2
+  82:	b9 aa       	std	Y+49, r11	; 0x31
+  84:	db a2       	std	Y+35, r13	; 0x23
+  86:	c3 60       	ori	r28, 0x03	; 3
+  88:	9f 62       	ori	r25, 0x2F	; 47
+  8a:	05 62       	ori	r16, 0x25	; 37
+  8c:	c1 82       	std	Z+1, r12	; 0x01
+  8e:	04 6a       	ori	r16, 0xA4	; 164
+  90:	46 00       	.word	0x0046	; ????
+  92:	08 42       	sbci	r16, 0x28	; 40
+  94:	06 00       	.word	0x0006	; ????
+  96:	11 c2       	rjmp	.+1058   	; 0x4ba <__data_load_end+0xf6>
+  98:	a9 c0       	rjmp	.+338    	; 0x1ec <write_char+0x76>
+  9a:	11 4a       	sbci	r17, 0xA1	; 161
+  9c:	11 6a       	ori	r17, 0xA1	; 161
+  9e:	53 42       	sbci	r21, 0x23	; 35
+  a0:	7c 00       	.word	0x007c	; ????
+  a2:	79 00       	.word	0x0079	; ????
+  a4:	a9 40       	sbci	r26, 0x09	; 9
+  a6:	81 40       	sbci	r24, 0x01	; 1
+  a8:	89 40       	sbci	r24, 0x09	; 9
+  aa:	b9 40       	sbci	r27, 0x09	; 9
+  ac:	05 40       	sbci	r16, 0x05	; 5
+  ae:	39 8a       	std	Y+17, r3	; 0x11
+  b0:	29 40       	sbci	r18, 0x09	; 9
+  b2:	11 c0       	rjmp	.+34     	; 0xd6 <__ctors_end+0x6>
+  b4:	7a 88       	ldd	r7, Y+18	; 0x12
+  b6:	72 8a       	std	Z+18, r7	; 0x12
+  b8:	01 c8       	rjmp	.-4094   	; 0xfffff0bc <__eeprom_end+0xff7ef0bc>
+  ba:	39 40       	sbci	r19, 0x09	; 9
+  bc:	f0 40       	sbci	r31, 0x00	; 0
+  be:	52 c0       	rjmp	.+164    	; 0x164 <setPixel+0x16>
+  c0:	30 c8       	rjmp	.-4000   	; 0xfffff122 <__eeprom_end+0xff7ef122>
+  c2:	59 9a       	sbi	0x0b, 1	; 11
+  c4:	49 d8       	rcall	.-3950   	; 0xfffff158 <__eeprom_end+0xff7ef158>
+  c6:	42 da       	rcall	.-2940   	; 0xfffff54c <__eeprom_end+0xff7ef54c>
+  c8:	23 a2       	std	Z+35, r2	; 0x23
+  ca:	05 40       	sbci	r16, 0x05	; 5
+  cc:	d9 08       	sbc	r13, r9
+  ce:	61 88       	ldd	r6, Z+17	; 0x11
+
+000000d0 <__ctors_end>:
+  d0:	11 24       	eor	r1, r1
+  d2:	1f be       	out	0x3f, r1	; 63
+  d4:	cf e9       	ldi	r28, 0x9F	; 159
+  d6:	cd bf       	out	0x3d, r28	; 61
+
+000000d8 <__do_copy_data>:
+  d8:	10 e0       	ldi	r17, 0x00	; 0
+  da:	a0 e6       	ldi	r26, 0x60	; 96
+  dc:	b0 e0       	ldi	r27, 0x00	; 0
+  de:	ec ea       	ldi	r30, 0xAC	; 172
+  e0:	f3 e0       	ldi	r31, 0x03	; 3
+  e2:	02 c0       	rjmp	.+4      	; 0xe8 <__do_copy_data+0x10>
+  e4:	05 90       	lpm	r0, Z+
+  e6:	0d 92       	st	X+, r0
+  e8:	a8 37       	cpi	r26, 0x78	; 120
+  ea:	b1 07       	cpc	r27, r17
+  ec:	d9 f7       	brne	.-10     	; 0xe4 <__do_copy_data+0xc>
+
+000000ee <__do_clear_bss>:
+  ee:	10 e0       	ldi	r17, 0x00	; 0
+  f0:	a8 e7       	ldi	r26, 0x78	; 120
+  f2:	b0 e0       	ldi	r27, 0x00	; 0
+  f4:	01 c0       	rjmp	.+2      	; 0xf8 <.do_clear_bss_start>
+
+000000f6 <.do_clear_bss_loop>:
+  f6:	1d 92       	st	X+, r1
+
+000000f8 <.do_clear_bss_start>:
+  f8:	a0 38       	cpi	r26, 0x80	; 128
+  fa:	b1 07       	cpc	r27, r17
+  fc:	e1 f7       	brne	.-8      	; 0xf6 <.do_clear_bss_loop>
+  fe:	7d d0       	rcall	.+250    	; 0x1fa <main>
+ 100:	53 c1       	rjmp	.+678    	; 0x3a8 <_exit>
+
+00000102 <__bad_interrupt>:
+ 102:	7e cf       	rjmp	.-260    	; 0x0 <__vectors>
+
+00000104 <getPixelColorFunction>:
+// so use this function determine each pixel color on the fly.
+// This function will call in the middle while sending data to WS2812.
+// This function must not run over 50 us or it will treat as another data cycle,
+// so keep it as simply as possible
+// Fail syndrome: only first LED blink
+uint8_t getPixelColorFunction(uint8_t idx, uint8_t bit_mask, uint8_t brg_idx) {
+ 104:	28 2f       	mov	r18, r24
+	if (bitmap[idx] & bit_mask) { // check LED should on or off
+ 106:	e8 2f       	mov	r30, r24
+ 108:	f0 e0       	ldi	r31, 0x00	; 0
+ 10a:	e8 58       	subi	r30, 0x88	; 136
+ 10c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 10e:	90 81       	ld	r25, Z
+ 110:	86 2f       	mov	r24, r22
+ 112:	89 23       	and	r24, r25
+ 114:	81 f0       	breq	.+32     	; 0x136 <getPixelColorFunction+0x32>
+		switch(brg_idx) { // PURPLE EDITION
+ 116:	44 23       	and	r20, r20
+ 118:	39 f0       	breq	.+14     	; 0x128 <getPixelColorFunction+0x24>
+ 11a:	41 30       	cpi	r20, 0x01	; 1
+ 11c:	59 f4       	brne	.+22     	; 0x134 <getPixelColorFunction+0x30>
+			case 0: // Blue
+				return ((bit_mask >> 4) & 0b00000111) + 4 + idx; // vary some blue light
+			case 1: // Red
+				return (bit_mask & 0b00000111) + 4 + BITMAP_SIZE - idx - 1; // var some red light
+ 11e:	67 70       	andi	r22, 0x07	; 7
+ 120:	65 5f       	subi	r22, 0xF5	; 245
+ 122:	86 2f       	mov	r24, r22
+ 124:	82 1b       	sub	r24, r18
+ 126:	08 95       	ret
+// Fail syndrome: only first LED blink
+uint8_t getPixelColorFunction(uint8_t idx, uint8_t bit_mask, uint8_t brg_idx) {
+	if (bitmap[idx] & bit_mask) { // check LED should on or off
+		switch(brg_idx) { // PURPLE EDITION
+			case 0: // Blue
+				return ((bit_mask >> 4) & 0b00000111) + 4 + idx; // vary some blue light
+ 128:	62 95       	swap	r22
+ 12a:	67 70       	andi	r22, 0x07	; 7
+ 12c:	82 2f       	mov	r24, r18
+ 12e:	86 0f       	add	r24, r22
+ 130:	8c 5f       	subi	r24, 0xFC	; 252
+ 132:	08 95       	ret
+			case 1: // Red
+				return (bit_mask & 0b00000111) + 4 + BITMAP_SIZE - idx - 1; // var some red light
+			default: //2: Green
+				return 0; // purple not need green light
+ 134:	80 e0       	ldi	r24, 0x00	; 0
+		}
+	} else { // LED off
+		return 0;
+	}
+}
+ 136:	08 95       	ret
+
+00000138 <clearBitmap>:
+char msg[] = "I WANNA BE YOUR LOVER";
+
+void clearBitmap() {
+	uint8_t idx = BITMAP_SIZE;
+	while (idx--) {
+		bitmap[idx] = 0;
+ 138:	e8 e7       	ldi	r30, 0x78	; 120
+ 13a:	f0 e0       	ldi	r31, 0x00	; 0
+ 13c:	17 82       	std	Z+7, r1	; 0x07
+ 13e:	16 82       	std	Z+6, r1	; 0x06
+ 140:	15 82       	std	Z+5, r1	; 0x05
+ 142:	14 82       	std	Z+4, r1	; 0x04
+ 144:	13 82       	std	Z+3, r1	; 0x03
+ 146:	12 82       	std	Z+2, r1	; 0x02
+ 148:	11 82       	std	Z+1, r1	; 0x01
+ 14a:	10 82       	st	Z, r1
+ 14c:	08 95       	ret
+
+0000014e <setPixel>:
+	}
+}
+
+void setPixel(uint16_t i) {
+	uint8_t idx = (uint8_t)i / 8;
+ 14e:	e8 2f       	mov	r30, r24
+ 150:	e6 95       	lsr	r30
+ 152:	e6 95       	lsr	r30
+ 154:	e6 95       	lsr	r30
+	uint8_t bit_offset = (uint8_t)i % 8;
+	uint8_t bit_mask = 0b10000000 >> bit_offset;
+	bitmap[idx] |= bit_mask;
+ 156:	f0 e0       	ldi	r31, 0x00	; 0
+ 158:	e8 58       	subi	r30, 0x88	; 136
+ 15a:	ff 4f       	sbci	r31, 0xFF	; 255
+	}
+}
+
+void setPixel(uint16_t i) {
+	uint8_t idx = (uint8_t)i / 8;
+	uint8_t bit_offset = (uint8_t)i % 8;
+ 15c:	28 2f       	mov	r18, r24
+ 15e:	27 70       	andi	r18, 0x07	; 7
+	uint8_t bit_mask = 0b10000000 >> bit_offset;
+ 160:	80 e8       	ldi	r24, 0x80	; 128
+ 162:	90 e0       	ldi	r25, 0x00	; 0
+ 164:	02 c0       	rjmp	.+4      	; 0x16a <setPixel+0x1c>
+ 166:	95 95       	asr	r25
+ 168:	87 95       	ror	r24
+ 16a:	2a 95       	dec	r18
+ 16c:	e2 f7       	brpl	.-8      	; 0x166 <setPixel+0x18>
+	bitmap[idx] |= bit_mask;
+ 16e:	90 81       	ld	r25, Z
+ 170:	89 2b       	or	r24, r25
+ 172:	80 83       	st	Z, r24
+ 174:	08 95       	ret
+
+00000176 <write_char>:
+}
+
+void write_char(int8_t pos, uint8_t c) {
+ 176:	ef 92       	push	r14
+ 178:	ff 92       	push	r15
+ 17a:	0f 93       	push	r16
+ 17c:	1f 93       	push	r17
+ 17e:	cf 93       	push	r28
+ 180:	df 93       	push	r29
+ 182:	f8 2e       	mov	r15, r24
+  uint8_t data_offset = (c - 32) * (((FONT_WIDTH * FONT_HEIGHT) + 7) / 8);
+ 184:	e6 2f       	mov	r30, r22
+ 186:	ee 0f       	add	r30, r30
+ 188:	10 ec       	ldi	r17, 0xC0	; 192
+ 18a:	1e 0f       	add	r17, r30
+  uint8_t cur_bit = 0;
+  uint8_t data = 0;
+  uint16_t i = 0;
+  uint16_t j = 0;
+
+  for (j = 0; j < (FONT_WIDTH * FONT_HEIGHT); j++) {
+ 18c:	c0 e0       	ldi	r28, 0x00	; 0
+ 18e:	d0 e0       	ldi	r29, 0x00	; 0
+}
+
+void write_char(int8_t pos, uint8_t c) {
+  uint8_t data_offset = (c - 32) * (((FONT_WIDTH * FONT_HEIGHT) + 7) / 8);
+  uint8_t cur_bit = 0;
+  uint8_t data = 0;
+ 190:	e1 2c       	mov	r14, r1
+	bitmap[idx] |= bit_mask;
+}
+
+void write_char(int8_t pos, uint8_t c) {
+  uint8_t data_offset = (c - 32) * (((FONT_WIDTH * FONT_HEIGHT) + 7) / 8);
+  uint8_t cur_bit = 0;
+ 192:	00 e0       	ldi	r16, 0x00	; 0
+  uint8_t data = 0;
+  uint16_t i = 0;
+  uint16_t j = 0;
+
+  for (j = 0; j < (FONT_WIDTH * FONT_HEIGHT); j++) {
+    if (!cur_bit) {
+ 194:	01 11       	cpse	r16, r1
+ 196:	09 c0       	rjmp	.+18     	; 0x1aa <write_char+0x34>
+      data = pgm_read_byte(&font_data[data_offset++]);
+ 198:	81 e0       	ldi	r24, 0x01	; 1
+ 19a:	81 0f       	add	r24, r17
+ 19c:	e1 2f       	mov	r30, r17
+ 19e:	f0 e0       	ldi	r31, 0x00	; 0
+ 1a0:	ec 5e       	subi	r30, 0xEC	; 236
+ 1a2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1a4:	e4 90       	lpm	r14, Z
+ 1a6:	18 2f       	mov	r17, r24
+      cur_bit = 0b10000000;
+ 1a8:	00 e8       	ldi	r16, 0x80	; 128
+    }
+    int8_t col = pos + (int8_t)(j / FONT_HEIGHT);
+ 1aa:	ce 01       	movw	r24, r28
+ 1ac:	65 e0       	ldi	r22, 0x05	; 5
+ 1ae:	70 e0       	ldi	r23, 0x00	; 0
+ 1b0:	e7 d0       	rcall	.+462    	; 0x380 <__udivmodhi4>
+ 1b2:	6f 0d       	add	r22, r15
+    if ((col >= 0) && (col < WIDTH)) {
+ 1b4:	6c 30       	cpi	r22, 0x0C	; 12
+ 1b6:	a8 f4       	brcc	.+42     	; 0x1e2 <write_char+0x6c>
+ 1b8:	26 2f       	mov	r18, r22
+ 1ba:	30 e0       	ldi	r19, 0x00	; 0
+      uint8_t row = j % FONT_HEIGHT;
+      if (row % 2) {
+ 1bc:	80 ff       	sbrs	r24, 0
+ 1be:	08 c0       	rjmp	.+16     	; 0x1d0 <write_char+0x5a>
+        i = ((row + 1) * WIDTH) - col - 1;
+ 1c0:	01 96       	adiw	r24, 0x01	; 1
+ 1c2:	6c e0       	ldi	r22, 0x0C	; 12
+ 1c4:	70 e0       	ldi	r23, 0x00	; 0
+ 1c6:	cb d0       	rcall	.+406    	; 0x35e <__mulhi3>
+ 1c8:	82 1b       	sub	r24, r18
+ 1ca:	93 0b       	sbc	r25, r19
+ 1cc:	01 97       	sbiw	r24, 0x01	; 1
+ 1ce:	05 c0       	rjmp	.+10     	; 0x1da <write_char+0x64>
+      } else {
+        i = (row * WIDTH) + col;
+ 1d0:	6c e0       	ldi	r22, 0x0C	; 12
+ 1d2:	70 e0       	ldi	r23, 0x00	; 0
+ 1d4:	c4 d0       	rcall	.+392    	; 0x35e <__mulhi3>
+ 1d6:	82 0f       	add	r24, r18
+ 1d8:	93 1f       	adc	r25, r19
+      }
+
+      if (data & cur_bit) {
+ 1da:	2e 2d       	mov	r18, r14
+ 1dc:	20 23       	and	r18, r16
+ 1de:	09 f0       	breq	.+2      	; 0x1e2 <write_char+0x6c>
+        setPixel(i);
+ 1e0:	b6 df       	rcall	.-148    	; 0x14e <setPixel>
+      }
+    }
+    cur_bit >>= 1;
+ 1e2:	06 95       	lsr	r16
+  uint8_t cur_bit = 0;
+  uint8_t data = 0;
+  uint16_t i = 0;
+  uint16_t j = 0;
+
+  for (j = 0; j < (FONT_WIDTH * FONT_HEIGHT); j++) {
+ 1e4:	21 96       	adiw	r28, 0x01	; 1
+ 1e6:	cf 30       	cpi	r28, 0x0F	; 15
+ 1e8:	d1 05       	cpc	r29, r1
+ 1ea:	a1 f6       	brne	.-88     	; 0x194 <write_char+0x1e>
+        setPixel(i);
+      }
+    }
+    cur_bit >>= 1;
+  }
+}
+ 1ec:	df 91       	pop	r29
+ 1ee:	cf 91       	pop	r28
+ 1f0:	1f 91       	pop	r17
+ 1f2:	0f 91       	pop	r16
+ 1f4:	ff 90       	pop	r15
+ 1f6:	ef 90       	pop	r14
+ 1f8:	08 95       	ret
+
+000001fa <main>:
+}
+
+int main(void)
+{
+  // init pin
+  DDRB |= _BV(ws2812_pin); // ws2812_config.h
+ 1fa:	bb 9a       	sbi	0x17, 3	; 23
+
+  // loop
+  while (1)
+  {
+	clearBitmap();
+ 1fc:	9d df       	rcall	.-198    	; 0x138 <clearBitmap>
+ 1fe:	00 e6       	ldi	r16, 0x60	; 96
+ 200:	10 e0       	ldi	r17, 0x00	; 0
+ 202:	c0 e0       	ldi	r28, 0x00	; 0
+
+	uint8_t i = 0;
+	for (; i < (sizeof(msg) - 1); i++) {
+		write_char(offset + (i * (FONT_WIDTH + CHAR_GAP)), msg[i]);
+ 204:	f8 01       	movw	r30, r16
+ 206:	61 91       	ld	r22, Z+
+ 208:	8f 01       	movw	r16, r30
+ 20a:	80 91 76 00 	lds	r24, 0x0076
+ 20e:	8c 0f       	add	r24, r28
+ 210:	b2 df       	rcall	.-156    	; 0x176 <write_char>
+ 212:	cc 5f       	subi	r28, 0xFC	; 252
+  while (1)
+  {
+	clearBitmap();
+
+	uint8_t i = 0;
+	for (; i < (sizeof(msg) - 1); i++) {
+ 214:	c4 35       	cpi	r28, 0x54	; 84
+ 216:	b1 f7       	brne	.-20     	; 0x204 <main+0xa>
+		write_char(offset + (i * (FONT_WIDTH + CHAR_GAP)), msg[i]);
+	}
+
+    offset--;
+ 218:	80 91 76 00 	lds	r24, 0x0076
+ 21c:	81 50       	subi	r24, 0x01	; 1
+    if (offset < (-(FONT_WIDTH + CHAR_GAP) * (int8_t)sizeof(msg))) { // left most position
+ 21e:	88 3a       	cpi	r24, 0xA8	; 168
+ 220:	0c f4       	brge	.+2      	; 0x224 <main+0x2a>
+		offset = WIDTH; // return to right most position
+ 222:	8c e0       	ldi	r24, 0x0C	; 12
+ 224:	80 93 76 00 	sts	0x0076, r24
+    }
+
+    ws2812_set_leds_func_ptr(WIDTH * HEIGHT, getPixelColorFunction);
+ 228:	62 e8       	ldi	r22, 0x82	; 130
+ 22a:	70 e0       	ldi	r23, 0x00	; 0
+ 22c:	8c e3       	ldi	r24, 0x3C	; 60
+ 22e:	90 e0       	ldi	r25, 0x00	; 0
+ 230:	94 d0       	rcall	.+296    	; 0x35a <ws2812_set_leds_func_ptr>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 232:	ff ef       	ldi	r31, 0xFF	; 255
+ 234:	27 e5       	ldi	r18, 0x57	; 87
+ 236:	82 e0       	ldi	r24, 0x02	; 2
+ 238:	f1 50       	subi	r31, 0x01	; 1
+ 23a:	20 40       	sbci	r18, 0x00	; 0
+ 23c:	80 40       	sbci	r24, 0x00	; 0
+ 23e:	e1 f7       	brne	.-8      	; 0x238 <main+0x3e>
+ 240:	00 c0       	rjmp	.+0      	; 0x242 <main+0x48>
+ 242:	00 00       	nop
+ 244:	db cf       	rjmp	.-74     	; 0x1fc <main+0x2>
+
+00000246 <ws2812_sendarray_mask>:
+void inline ws2812_sendarray_mask(uint8_t *data,uint16_t datlen,uint8_t maskhi)
+{
+  uint8_t curbyte,ctr,masklo;
+  uint8_t sreg_prev;
+  
+  ws2812_DDRREG |= maskhi; // Enable output
+ 246:	27 b3       	in	r18, 0x17	; 23
+ 248:	24 2b       	or	r18, r20
+ 24a:	27 bb       	out	0x17, r18	; 23
+  
+  masklo	=~maskhi&ws2812_PORTREG;
+ 24c:	28 b3       	in	r18, 0x18	; 24
+ 24e:	34 2f       	mov	r19, r20
+ 250:	30 95       	com	r19
+ 252:	23 23       	and	r18, r19
+  maskhi |=        ws2812_PORTREG;
+ 254:	38 b3       	in	r19, 0x18	; 24
+ 256:	43 2b       	or	r20, r19
+  
+  sreg_prev=SREG;
+ 258:	3f b7       	in	r19, 0x3f	; 63
+  cli();  
+ 25a:	f8 94       	cli
+ 25c:	fc 01       	movw	r30, r24
+ 25e:	68 0f       	add	r22, r24
+ 260:	79 1f       	adc	r23, r25
+
+  while (datlen--) {
+ 262:	e6 17       	cp	r30, r22
+ 264:	f7 07       	cpc	r31, r23
+ 266:	69 f0       	breq	.+26     	; 0x282 <loop24+0x16>
+    curbyte=*data++;
+ 268:	81 91       	ld	r24, Z+
+    
+    asm volatile(
+ 26a:	98 e0       	ldi	r25, 0x08	; 8
+
+0000026c <loop24>:
+ 26c:	48 bb       	out	0x18, r20	; 24
+ 26e:	00 00       	nop
+ 270:	87 ff       	sbrs	r24, 7
+ 272:	28 bb       	out	0x18, r18	; 24
+ 274:	88 0f       	add	r24, r24
+ 276:	00 c0       	rjmp	.+0      	; 0x278 <loop24+0xc>
+ 278:	00 c0       	rjmp	.+0      	; 0x27a <loop24+0xe>
+ 27a:	28 bb       	out	0x18, r18	; 24
+ 27c:	9a 95       	dec	r25
+ 27e:	b1 f7       	brne	.-20     	; 0x26c <loop24>
+ 280:	f0 cf       	rjmp	.-32     	; 0x262 <ws2812_sendarray_mask+0x1c>
+    :	"=&d" (ctr)
+    :	"r" (curbyte), "I" (_SFR_IO_ADDR(ws2812_PORTREG)), "r" (maskhi), "r" (masklo)
+    );
+  }
+  
+  SREG=sreg_prev;
+ 282:	3f bf       	out	0x3f, r19	; 63
+ 284:	08 95       	ret
+
+00000286 <ws2812_setleds_pin>:
+   ws2812_setleds_pin(ledarray,leds, _BV(ws2812_pin));
+}
+
+void inline ws2812_setleds_pin(struct cRGB *ledarray, uint16_t leds, uint8_t pinmask)
+{
+  ws2812_sendarray_mask((uint8_t*)ledarray,leds+leds+leds,pinmask);
+ 286:	9b 01       	movw	r18, r22
+ 288:	22 0f       	add	r18, r18
+ 28a:	33 1f       	adc	r19, r19
+ 28c:	62 0f       	add	r22, r18
+ 28e:	73 1f       	adc	r23, r19
+ 290:	da df       	rcall	.-76     	; 0x246 <ws2812_sendarray_mask>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 292:	80 ea       	ldi	r24, 0xA0	; 160
+ 294:	8a 95       	dec	r24
+ 296:	f1 f7       	brne	.-4      	; 0x294 <ws2812_setleds_pin+0xe>
+ 298:	00 00       	nop
+ 29a:	08 95       	ret
+
+0000029c <ws2812_setleds>:
+#include <util/delay.h>
+ 
+// Setleds for standard RGB 
+void inline ws2812_setleds(struct cRGB *ledarray, uint16_t leds)
+{
+   ws2812_setleds_pin(ledarray,leds, _BV(ws2812_pin));
+ 29c:	48 e0       	ldi	r20, 0x08	; 8
+ 29e:	f3 cf       	rjmp	.-26     	; 0x286 <ws2812_setleds_pin>
+
+000002a0 <ws2812_setleds_rgbw>:
+}
+
+// Setleds for SK6812RGBW
+void inline ws2812_setleds_rgbw(struct cRGBW *ledarray, uint16_t leds)
+{
+  ws2812_sendarray_mask((uint8_t*)ledarray,leds<<2,_BV(ws2812_pin));
+ 2a0:	66 0f       	add	r22, r22
+ 2a2:	77 1f       	adc	r23, r23
+ 2a4:	66 0f       	add	r22, r22
+ 2a6:	77 1f       	adc	r23, r23
+ 2a8:	48 e0       	ldi	r20, 0x08	; 8
+ 2aa:	cd df       	rcall	.-102    	; 0x246 <ws2812_sendarray_mask>
+ 2ac:	8f eb       	ldi	r24, 0xBF	; 191
+ 2ae:	90 e0       	ldi	r25, 0x00	; 0
+ 2b0:	01 97       	sbiw	r24, 0x01	; 1
+ 2b2:	f1 f7       	brne	.-4      	; 0x2b0 <ws2812_setleds_rgbw+0x10>
+ 2b4:	00 c0       	rjmp	.+0      	; 0x2b6 <ws2812_setleds_rgbw+0x16>
+ 2b6:	00 00       	nop
+ 2b8:	08 95       	ret
+
+000002ba <ws2812_sendarray>:
+  _delay_us(80);
+}
+
+void ws2812_sendarray(uint8_t *data,uint16_t datlen)
+{
+  ws2812_sendarray_mask(data,datlen,_BV(ws2812_pin));
+ 2ba:	48 e0       	ldi	r20, 0x08	; 8
+ 2bc:	c4 cf       	rjmp	.-120    	; 0x246 <ws2812_sendarray_mask>
+
+000002be <ws2812_set_leds_func_ptr_mask>:
+{
+  ws2812_set_leds_func_ptr_mask(datlen, getPixelColorPtr, _BV(ws2812_pin));
+}
+
+void inline ws2812_set_leds_func_ptr_mask(uint16_t datlen, getPixelColor getPixelColorPtr, uint8_t maskhi)
+{
+ 2be:	9f 92       	push	r9
+ 2c0:	af 92       	push	r10
+ 2c2:	bf 92       	push	r11
+ 2c4:	cf 92       	push	r12
+ 2c6:	df 92       	push	r13
+ 2c8:	ef 92       	push	r14
+ 2ca:	ff 92       	push	r15
+ 2cc:	0f 93       	push	r16
+ 2ce:	1f 93       	push	r17
+ 2d0:	cf 93       	push	r28
+ 2d2:	df 93       	push	r29
+ 2d4:	6b 01       	movw	r12, r22
+  uint8_t curbyte,ctr,masklo;
+  uint8_t sreg_prev;
+  
+  ws2812_DDRREG |= maskhi; // Enable output
+ 2d6:	97 b3       	in	r25, 0x17	; 23
+ 2d8:	94 2b       	or	r25, r20
+ 2da:	97 bb       	out	0x17, r25	; 23
+  
+  masklo	=~maskhi&ws2812_PORTREG;
+ 2dc:	98 b3       	in	r25, 0x18	; 24
+ 2de:	04 2f       	mov	r16, r20
+ 2e0:	00 95       	com	r16
+ 2e2:	09 23       	and	r16, r25
+  maskhi |=        ws2812_PORTREG;
+ 2e4:	98 b3       	in	r25, 0x18	; 24
+ 2e6:	f4 2e       	mov	r15, r20
+ 2e8:	f9 2a       	or	r15, r25
+  
+  sreg_prev=SREG;
+ 2ea:	9f b6       	in	r9, 0x3f	; 63
+  cli();
+ 2ec:	f8 94       	cli
+
+uint8_t bytes = (uint8_t)(datlen + 7) / 8;
+ 2ee:	89 5f       	subi	r24, 0xF9	; 249
+ 2f0:	c8 2f       	mov	r28, r24
+ 2f2:	c6 95       	lsr	r28
+ 2f4:	c6 95       	lsr	r28
+ 2f6:	c6 95       	lsr	r28
+uint8_t idx;
+  for (idx = 0; idx < bytes; idx++) {
+ 2f8:	d0 e0       	ldi	r29, 0x00	; 0
+ 2fa:	dc 17       	cp	r29, r28
+ 2fc:	09 f1       	breq	.+66     	; 0x340 <loop142+0x24>
+ 2fe:	88 e0       	ldi	r24, 0x08	; 8
+ 300:	a8 2e       	mov	r10, r24
+ 302:	b1 2c       	mov	r11, r1
+ 304:	90 e8       	ldi	r25, 0x80	; 128
+ 306:	e9 2e       	mov	r14, r25
+{
+  ws2812_set_leds_func_ptr_mask(datlen, getPixelColorPtr, _BV(ws2812_pin));
+}
+
+void inline ws2812_set_leds_func_ptr_mask(uint16_t datlen, getPixelColor getPixelColorPtr, uint8_t maskhi)
+{
+ 308:	13 e0       	ldi	r17, 0x03	; 3
+uint8_t idx;
+  for (idx = 0; idx < bytes; idx++) {
+	uint8_t bit_mask = 0b10000000;
+	while (bit_mask) {
+  	uint8_t brg_idx = 3;
+	while (brg_idx--) {
+ 30a:	11 50       	subi	r17, 0x01	; 1
+ 30c:	90 f0       	brcs	.+36     	; 0x332 <loop142+0x16>
+	curbyte = getPixelColorPtr(idx, bit_mask, brg_idx);
+ 30e:	41 2f       	mov	r20, r17
+ 310:	6e 2d       	mov	r22, r14
+ 312:	8d 2f       	mov	r24, r29
+ 314:	f6 01       	movw	r30, r12
+ 316:	09 95       	icall
+
+    asm volatile(
+ 318:	f8 2f       	mov	r31, r24
+ 31a:	88 e0       	ldi	r24, 0x08	; 8
+
+0000031c <loop142>:
+ 31c:	f8 ba       	out	0x18, r15	; 24
+ 31e:	00 00       	nop
+ 320:	f7 ff       	sbrs	r31, 7
+ 322:	08 bb       	out	0x18, r16	; 24
+ 324:	ff 0f       	add	r31, r31
+ 326:	00 c0       	rjmp	.+0      	; 0x328 <loop142+0xc>
+ 328:	00 c0       	rjmp	.+0      	; 0x32a <loop142+0xe>
+ 32a:	08 bb       	out	0x18, r16	; 24
+ 32c:	8a 95       	dec	r24
+ 32e:	b1 f7       	brne	.-20     	; 0x31c <loop142>
+ 330:	ec cf       	rjmp	.-40     	; 0x30a <ws2812_set_leds_func_ptr_mask+0x4c>
+    "       brne  loop%=\n\t"    //  '1' [+3] '0' [+4]
+    :	"=&d" (ctr)
+    :	"r" (curbyte), "I" (_SFR_IO_ADDR(ws2812_PORTREG)), "r" (maskhi), "r" (masklo)
+    );
+  }
+bit_mask >>= 1;  }
+ 332:	e6 94       	lsr	r14
+ 334:	81 e0       	ldi	r24, 0x01	; 1
+ 336:	a8 1a       	sub	r10, r24
+ 338:	b1 08       	sbc	r11, r1
+
+uint8_t bytes = (uint8_t)(datlen + 7) / 8;
+uint8_t idx;
+  for (idx = 0; idx < bytes; idx++) {
+	uint8_t bit_mask = 0b10000000;
+	while (bit_mask) {
+ 33a:	31 f7       	brne	.-52     	; 0x308 <ws2812_set_leds_func_ptr_mask+0x4a>
+  sreg_prev=SREG;
+  cli();
+
+uint8_t bytes = (uint8_t)(datlen + 7) / 8;
+uint8_t idx;
+  for (idx = 0; idx < bytes; idx++) {
+ 33c:	df 5f       	subi	r29, 0xFF	; 255
+ 33e:	dd cf       	rjmp	.-70     	; 0x2fa <ws2812_set_leds_func_ptr_mask+0x3c>
+    :	"r" (curbyte), "I" (_SFR_IO_ADDR(ws2812_PORTREG)), "r" (maskhi), "r" (masklo)
+    );
+  }
+bit_mask >>= 1;  }
+  }
+  SREG=sreg_prev;
+ 340:	9f be       	out	0x3f, r9	; 63
+}
+ 342:	df 91       	pop	r29
+ 344:	cf 91       	pop	r28
+ 346:	1f 91       	pop	r17
+ 348:	0f 91       	pop	r16
+ 34a:	ff 90       	pop	r15
+ 34c:	ef 90       	pop	r14
+ 34e:	df 90       	pop	r13
+ 350:	cf 90       	pop	r12
+ 352:	bf 90       	pop	r11
+ 354:	af 90       	pop	r10
+ 356:	9f 90       	pop	r9
+ 358:	08 95       	ret
+
+0000035a <ws2812_set_leds_func_ptr>:
+/*
+ * Added getPixelColor() for low memory MCU
+ */
+void ws2812_set_leds_func_ptr(uint16_t datlen, getPixelColor getPixelColorPtr)
+{
+  ws2812_set_leds_func_ptr_mask(datlen, getPixelColorPtr, _BV(ws2812_pin));
+ 35a:	48 e0       	ldi	r20, 0x08	; 8
+ 35c:	b0 cf       	rjmp	.-160    	; 0x2be <ws2812_set_leds_func_ptr_mask>
+
+0000035e <__mulhi3>:
+ 35e:	00 24       	eor	r0, r0
+ 360:	55 27       	eor	r21, r21
+ 362:	04 c0       	rjmp	.+8      	; 0x36c <__mulhi3+0xe>
+ 364:	08 0e       	add	r0, r24
+ 366:	59 1f       	adc	r21, r25
+ 368:	88 0f       	add	r24, r24
+ 36a:	99 1f       	adc	r25, r25
+ 36c:	00 97       	sbiw	r24, 0x00	; 0
+ 36e:	29 f0       	breq	.+10     	; 0x37a <__mulhi3+0x1c>
+ 370:	76 95       	lsr	r23
+ 372:	67 95       	ror	r22
+ 374:	b8 f3       	brcs	.-18     	; 0x364 <__mulhi3+0x6>
+ 376:	71 05       	cpc	r23, r1
+ 378:	b9 f7       	brne	.-18     	; 0x368 <__mulhi3+0xa>
+ 37a:	80 2d       	mov	r24, r0
+ 37c:	95 2f       	mov	r25, r21
+ 37e:	08 95       	ret
+
+00000380 <__udivmodhi4>:
+ 380:	aa 1b       	sub	r26, r26
+ 382:	bb 1b       	sub	r27, r27
+ 384:	51 e1       	ldi	r21, 0x11	; 17
+ 386:	07 c0       	rjmp	.+14     	; 0x396 <__udivmodhi4_ep>
+
+00000388 <__udivmodhi4_loop>:
+ 388:	aa 1f       	adc	r26, r26
+ 38a:	bb 1f       	adc	r27, r27
+ 38c:	a6 17       	cp	r26, r22
+ 38e:	b7 07       	cpc	r27, r23
+ 390:	10 f0       	brcs	.+4      	; 0x396 <__udivmodhi4_ep>
+ 392:	a6 1b       	sub	r26, r22
+ 394:	b7 0b       	sbc	r27, r23
+
+00000396 <__udivmodhi4_ep>:
+ 396:	88 1f       	adc	r24, r24
+ 398:	99 1f       	adc	r25, r25
+ 39a:	5a 95       	dec	r21
+ 39c:	a9 f7       	brne	.-22     	; 0x388 <__udivmodhi4_loop>
+ 39e:	80 95       	com	r24
+ 3a0:	90 95       	com	r25
+ 3a2:	bc 01       	movw	r22, r24
+ 3a4:	cd 01       	movw	r24, r26
+ 3a6:	08 95       	ret
+
+000003a8 <_exit>:
+ 3a8:	f8 94       	cli
+
+000003aa <__stop_program>:
+ 3aa:	ff cf       	rjmp	.-2      	; 0x3aa <__stop_program>
