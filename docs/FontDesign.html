@@ -38,8 +38,8 @@
       border-color: #000000;
       background-color: #000000;
       display: table-cell;
-      width: 1px;
-      height: 1px;
+      width: 2px;
+      height: 2px;
     }
 
     .null-cell {
@@ -150,15 +150,16 @@
     }
 
     function drawFontSetPreviewTable() {
-      var fontSetValue = $("#font-set-input-value").val();
+      var fontSetValue = $("#font-set-input-value").val().replace(/\s/g, "");
       var w = parseInt($("#width-size").val());
       var h = parseInt($("#height-size").val());
-      var digitPerChar = Math.round(((w * h) / 4) + 0.49);
-      var fontSetWidth = fontSetValue.length / digitPerChar;
+      var charGap = parseInt($("#char-gap").val());
+      var bytePerChar = Math.round(((w * h) / 8) + 0.49);
+      var fontSetWidth = fontSetValue.length / 2 / bytePerChar;
       var tinyTableBodyHtml = "";
       for (var y = 0; y < h; y++) {
         tinyTableBodyHtml += "<div class=\"Row\">";
-        for (var x = 0; x < (fontSetWidth * w); x++) {
+        for (var x = 0; x < (fontSetWidth * (w + charGap)); x++) {
           tinyTableBodyHtml += "<div class=\"tiny-cell\" id=\"tiny-pixel-" + y + "-" + x + "\"></div>";
         }
         tinyTableBodyHtml += "</div>";
@@ -168,14 +169,12 @@
       for (var fontOffset = 0; fontOffset < fontSetWidth; fontOffset++) {
         var dOffset = 0;
         var offset = 0;
-        var value = fontSetValue.substring((fontOffset * digitPerChar), (fontOffset * digitPerChar) + digitPerChar);
+        var value = fontSetValue.substring((fontOffset * bytePerChar * 2), (fontOffset * bytePerChar * 2) + (bytePerChar * 2));
         var digitValue = hexValue[value.substring(dOffset, dOffset + 1)];
         for (var x = 0; x < w; x++) {
           for (var y = 0; y < h; y++) {
             if ((digitValue & (1 << (3 - offset))) > 0) {
-              $("#tiny-pixel-" + y + "-" + (x + (w * fontOffset))).addClass("tiny-black-cell");
-            } else {
-              $("#tiny-pixel-" + y + "-" + (x + (w * fontOffset))).removeClass("tiny-black-cell");
+              $("#tiny-pixel-" + y + "-" + (x + (fontOffset * (w + charGap)))).addClass("tiny-black-cell");
             }
 
             offset++;
@@ -202,10 +201,12 @@
         }
       }
       $("#font-set-code").html("<pre><code>/*<br>Design you own font:<br>https://moononournation.github.io/Font-Stuff/FontDesign.html<br>"
-        + "<br>fontsetvalue:<br>" + fontSetValue
+        + "<br>fontsetvalue:<br>" + $("#font-set-input-value").val()
         + "<br>*/<br>#include &lt;avr/pgmspace.h&gt;<br>"
-        + "<br>#define FONT_WIDTH  " + $("#width-size").val()
+        + "<br>#define FONT_WIDTH " + $("#width-size").val()
         + "<br>#define FONT_HEIGHT " + $("#height-size").val()
+        + "<br>#define CHAR_GAP " + $("#char-gap").val()
+        + "<br>#define FIRST_CHAR '" + $("#first-char").val() + "'"
         + "<br><br>static const uint8_t font_data[] PROGMEM = {<br>"
         + fontSetCodehtml + "<br>};</code></pre>");
     }
@@ -234,6 +235,14 @@
     <p>
       <label for="font-set-input-value">Font Set Input</label>
       <input type="text" id="font-set-input-value" size="64">
+    </p>
+    <p>
+      <label for="char-gap">Gap between character</label>
+      <input type="text" id="char-gap" size="2" value="1">
+    </p>
+    <p>
+      <label for="first-char">First character</label>
+      <input type="text" id="first-char" size="1" value="0">
     </p>
     <div id="font-set-preview"></div>
     <div id="font-set-code"></div>
