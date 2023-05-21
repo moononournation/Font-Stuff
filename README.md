@@ -6,5 +6,5 @@ http://www.instructables.com/id/Display-Colorful-Message-in-Limited-Resources/
 ## Folder Structure
 ### Examples
 Example for using customized font
-### FontDesignHtml
+### docs
 Html base tools for design your own font, you can download and run in local browser
