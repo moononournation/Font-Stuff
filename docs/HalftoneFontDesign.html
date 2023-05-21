@@ -1,191 +1,123 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
-	<title>Halftone Font Design</title>
-  <link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/default.css">
+  <title>Halftone Font Design</title>
   <style>
-  .Table
-  {
-    display: table;
-    font-size: small;
-    border: solid;
-    border-color: #BFBFBF;
-    border-width: 16px;
-  }
-  .tiny-table
-  {
-    display: table;
-    font-size: xx-small;
-    border: solid;
-    border-color: #000000;
-    border-width: 20px;
-  }
-  .Row
-  {
-    display: table-row;
-  }
-  .Cell
-  {
-    display: table-cell;
-    border: solid;
-    border-color: #BFBFBF;
-    border-width: thin;
-    width: 16px;
-    height: 16px;
-  }
-  .tiny-cell
-  {
-    border-color: #000000;
-    background-color: #000000;
-    display: table-cell;
-    width: 1px;
-    height: 1px;
-  }
-  .null-cell {
-    background-color: #BFBFBF;
-  }
-  .tiny-null-cell {
-    background-color: #000000;
-  }
-  .black-cell {
-    background-color: #000000;
-  }
-  .tiny-black-cell {
-    background-color: #FFFFFF;
-  }
-  .Value
-  {
-    width: 200px;
-  }
+    .Table {
+      display: table;
+      font-size: small;
+      border: solid;
+      border-color: #BFBFBF;
+      border-width: 16px;
+    }
+
+    .tiny-table {
+      display: table;
+      font-size: xx-small;
+      border: solid;
+      border-color: #000000;
+      border-width: 20px;
+    }
+
+    .Row {
+      display: table-row;
+    }
+
+    .Cell {
+      display: table-cell;
+      border: solid;
+      border-color: #BFBFBF;
+      border-width: thin;
+      width: 16px;
+      height: 16px;
+    }
+
+    .tiny-cell {
+      border-color: #000000;
+      background-color: #000000;
+      display: table-cell;
+      width: 1px;
+      height: 1px;
+    }
+
+    .null-cell {
+      background-color: #BFBFBF;
+    }
+
+    .tiny-null-cell {
+      background-color: #000000;
+    }
+
+    .black-cell {
+      background-color: #000000;
+    }
+
+    .tiny-black-cell {
+      background-color: #FFFFFF;
+    }
+
+    .Value {
+      width: 200px;
+    }
   </style>
   <script src="http://code.jquery.com/jquery.min.js"></script>
-  <script src="https://highlightjs.org/static/highlight.pack.js"></script>
   <script>
-  var hexCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
-  var hexValue = new Array();
-  for (var i = 0; i < 16; i++) { hexValue[hexCode[i]] = i;}
+    var hexCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+    var hexValue = new Array();
+    for (var i = 0; i < 16; i++) { hexValue[hexCode[i]] = i; }
 
-  $( function() {
-    drawPreviewTable();
+    $(function () {
+      drawPreviewTable();
 
-    $("#width-size").change(drawPreviewTable);
-    $("#height-size").change(drawPreviewTable);
-    $("#input-value").change(decodeValue);
-    $("#font-set-input-value").change(drawFontSetPreviewTable);
-  } )
+      $("#width-size").change(drawPreviewTable);
+      $("#height-size").change(drawPreviewTable);
+      $("#input-value").change(decodeValue);
+      $("#font-set-input-value").change(drawFontSetPreviewTable);
+    })
 
-  function encodeValue() {
-    var w = parseInt($("#width-size").val());
-    var h = parseInt($("#height-size").val());
-    var offset = 0;
-    var digitValue = 0;
-    var value = '';
-    for (var x = 0; x < w; x++) {
-      for (var y = 0; y < h; y++) {
-        if ($("#pixel-" + hexCode[y] + "-" + hexCode[x]).hasClass("black-cell")) {
-          digitValue |= (1 << (3 - offset));
-        }
-        offset++;
-        if (offset > 3) {
-          value += hexCode[digitValue];
-          offset = 0;
-          digitValue = 0;
-        }
-      }
-    }
-
-    if (offset > 0) {
-      value += hexCode[digitValue];
-    }
-
-    $("#output-value").val(value);
-  }
-
-  function decodeValue() {
-    var w = parseInt($("#width-size").val());
-    var h = parseInt($("#height-size").val());
-    var dOffset = 0;
-    var offset = 0;
-    var value = $("#input-value").val();
-    $("#output-value").val(value);
-    var digitValue = hexValue[value.substring(dOffset, dOffset + 1)];
-    for (var x = 0; x < w; x++) {
-      for (var y = 0; y < h; y++) {
-        if ((digitValue & (1 << (3 - offset))) > 0) {
-          $("#pixel-" + hexCode[y] + "-" + hexCode[x]).addClass("black-cell");
-        } else {
-          $("#pixel-" + hexCode[y] + "-" + hexCode[x]).removeClass("black-cell");
-        }
-
-        offset++;
-        if (offset > 3) {
-          dOffset++;
-          digitValue = hexValue[value.substring(dOffset, dOffset + 1)];
-          offset = 0;
-        }
-      }
-    }
-  }
-
-  function drawPreviewTable() {
-    var w = parseInt($("#width-size").val());
-    var h = parseInt($("#height-size").val());
-    var table_body_html = "";
-    for (var y = 0; y < h; y++) {
-      table_body_html += "<div class=\"Row\">";
+    function encodeValue() {
+      var w = parseInt($("#width-size").val());
+      var h = parseInt($("#height-size").val());
+      var offset = 0;
+      var digitValue = 0;
+      var value = '';
       for (var x = 0; x < w; x++) {
-        if ((y % 2) == 1) {
-          table_body_html += "<div class=\"Cell null-cell\"></div>";
-          table_body_html += "<div class=\"Cell\" id=\"pixel-" + hexCode[y] + "-" + hexCode[x] + "\"></div>";
-        } else {
-          table_body_html += "<div class=\"Cell\" id=\"pixel-" + hexCode[y] + "-" + hexCode[x] + "\"></div>";
-          table_body_html += "<div class=\"Cell null-cell\"></div>";
+        for (var y = 0; y < h; y++) {
+          if ($("#pixel-" + hexCode[y] + "-" + hexCode[x]).hasClass("black-cell")) {
+            digitValue |= (1 << (3 - offset));
+          }
+          offset++;
+          if (offset > 3) {
+            value += hexCode[digitValue];
+            offset = 0;
+            digitValue = 0;
+          }
         }
       }
-      table_body_html += "</div>";
-    }
-    $("#preview").html("<div class=\"Table\">" + table_body_html + "</div>");
 
-    $("[id^=pixel-]").click( function() {
-      $(this).toggleClass("black-cell");
-      encodeValue();
-    } );
-  }
-
-  function drawFontSetPreviewTable() {
-    var fontSetValue = $("#font-set-input-value").val();
-    var w = parseInt($("#width-size").val());
-    var h = parseInt($("#height-size").val());
-    var digitPerChar = Math.round(((w * h) / 4) + 0.49);
-    var fontSetWidth = fontSetValue.length / digitPerChar;
-    var tinyTableBodyHtml = "";
-    for (var y = 0; y < h; y++) {
-      tinyTableBodyHtml += "<div class=\"Row\">";
-      for (var x = 0; x < (fontSetWidth * w); x++) {
-        if ((y % 2) == 1) {
-          tinyTableBodyHtml += "<div class=\"tiny-cell tiny-null-cell\"></div>";
-          tinyTableBodyHtml += "<div class=\"tiny-cell\" id=\"tiny-pixel-" + y + "-" + x + "\"></div>";
-        } else {
-          tinyTableBodyHtml += "<div class=\"tiny-cell\" id=\"tiny-pixel-" + y + "-" + x + "\"></div>";
-          tinyTableBodyHtml += "<div class=\"tiny-cell tiny-null-cell\"></div>";
-        }
+      if (offset > 0) {
+        value += hexCode[digitValue];
       }
-      tinyTableBodyHtml += "</div>";
-    }
-    $("#font-set-preview").html("<div class=\"tiny-table\">" + tinyTableBodyHtml + "</div>");
 
-    for (var fontOffset = 0; fontOffset < fontSetWidth; fontOffset++) {
+      $("#output-value").val(value);
+    }
+
+    function decodeValue() {
+      var w = parseInt($("#width-size").val());
+      var h = parseInt($("#height-size").val());
       var dOffset = 0;
       var offset = 0;
-      var value = fontSetValue.substring((fontOffset * digitPerChar), (fontOffset * digitPerChar) + digitPerChar);
+      var value = $("#input-value").val();
+      $("#output-value").val(value);
       var digitValue = hexValue[value.substring(dOffset, dOffset + 1)];
       for (var x = 0; x < w; x++) {
         for (var y = 0; y < h; y++) {
           if ((digitValue & (1 << (3 - offset))) > 0) {
-            $("#tiny-pixel-" + y + "-" + (x + (w * fontOffset))).addClass("tiny-black-cell");
+            $("#pixel-" + hexCode[y] + "-" + hexCode[x]).addClass("black-cell");
           } else {
-            $("#tiny-pixel-" + y + "-" + (x + (w * fontOffset))).removeClass("tiny-black-cell");
+            $("#pixel-" + hexCode[y] + "-" + hexCode[x]).removeClass("black-cell");
           }
 
           offset++;
@@ -198,32 +130,100 @@
       }
     }
 
-    var fontSetByteCount = Math.round(fontSetValue.length / 2);
-    var fontSetCodehtml = '';
-    for (var byteOffset = 0; byteOffset < fontSetByteCount; byteOffset++) {
-      fontSetCodehtml += '0x' + fontSetValue.substring((byteOffset * 2), (byteOffset * 2) + 2);
-      if (byteOffset < (fontSetByteCount - 1)) {
-        fontSetCodehtml += ',';
-        if ((byteOffset % 8) == 7) {
-          fontSetCodehtml += '<br>';
-        } else {
-          fontSetCodehtml += ' ';
+    function drawPreviewTable() {
+      var w = parseInt($("#width-size").val());
+      var h = parseInt($("#height-size").val());
+      var table_body_html = "";
+      for (var y = 0; y < h; y++) {
+        table_body_html += "<div class=\"Row\">";
+        for (var x = 0; x < w; x++) {
+          if ((y % 2) == 1) {
+            table_body_html += "<div class=\"Cell null-cell\"></div>";
+            table_body_html += "<div class=\"Cell\" id=\"pixel-" + hexCode[y] + "-" + hexCode[x] + "\"></div>";
+          } else {
+            table_body_html += "<div class=\"Cell\" id=\"pixel-" + hexCode[y] + "-" + hexCode[x] + "\"></div>";
+            table_body_html += "<div class=\"Cell null-cell\"></div>";
+          }
+        }
+        table_body_html += "</div>";
+      }
+      $("#preview").html("<div class=\"Table\">" + table_body_html + "</div>");
+
+      $("[id^=pixel-]").click(function () {
+        $(this).toggleClass("black-cell");
+        encodeValue();
+      });
+    }
+
+    function drawFontSetPreviewTable() {
+      var fontSetValue = $("#font-set-input-value").val();
+      var w = parseInt($("#width-size").val());
+      var h = parseInt($("#height-size").val());
+      var digitPerChar = Math.round(((w * h) / 4) + 0.49);
+      var fontSetWidth = fontSetValue.length / digitPerChar;
+      var tinyTableBodyHtml = "";
+      for (var y = 0; y < h; y++) {
+        tinyTableBodyHtml += "<div class=\"Row\">";
+        for (var x = 0; x < (fontSetWidth * w); x++) {
+          if ((y % 2) == 1) {
+            tinyTableBodyHtml += "<div class=\"tiny-cell tiny-null-cell\"></div>";
+            tinyTableBodyHtml += "<div class=\"tiny-cell\" id=\"tiny-pixel-" + y + "-" + x + "\"></div>";
+          } else {
+            tinyTableBodyHtml += "<div class=\"tiny-cell\" id=\"tiny-pixel-" + y + "-" + x + "\"></div>";
+            tinyTableBodyHtml += "<div class=\"tiny-cell tiny-null-cell\"></div>";
+          }
+        }
+        tinyTableBodyHtml += "</div>";
+      }
+      $("#font-set-preview").html("<div class=\"tiny-table\">" + tinyTableBodyHtml + "</div>");
+
+      for (var fontOffset = 0; fontOffset < fontSetWidth; fontOffset++) {
+        var dOffset = 0;
+        var offset = 0;
+        var value = fontSetValue.substring((fontOffset * digitPerChar), (fontOffset * digitPerChar) + digitPerChar);
+        var digitValue = hexValue[value.substring(dOffset, dOffset + 1)];
+        for (var x = 0; x < w; x++) {
+          for (var y = 0; y < h; y++) {
+            if ((digitValue & (1 << (3 - offset))) > 0) {
+              $("#tiny-pixel-" + y + "-" + (x + (w * fontOffset))).addClass("tiny-black-cell");
+            } else {
+              $("#tiny-pixel-" + y + "-" + (x + (w * fontOffset))).removeClass("tiny-black-cell");
+            }
+
+            offset++;
+            if (offset > 3) {
+              dOffset++;
+              digitValue = hexValue[value.substring(dOffset, dOffset + 1)];
+              offset = 0;
+            }
+          }
         }
       }
+
+      var fontSetByteCount = Math.round(fontSetValue.length / 2);
+      var fontSetCodehtml = '';
+      for (var byteOffset = 0; byteOffset < fontSetByteCount; byteOffset++) {
+        fontSetCodehtml += '0x' + fontSetValue.substring((byteOffset * 2), (byteOffset * 2) + 2);
+        if (byteOffset < (fontSetByteCount - 1)) {
+          fontSetCodehtml += ',';
+          if ((byteOffset % 8) == 7) {
+            fontSetCodehtml += '<br>';
+          } else {
+            fontSetCodehtml += ' ';
+          }
+        }
+      }
+      $("#font-set-code").html("<pre><code>/*<br>Design you own font:<br>https://github.com/moononournation/Font-Stuff/tree/master/FontDesignHtml<br>"
+        + "<br>fontsetvalue:<br>" + fontSetValue
+        + "<br>*/<br>#include &lt;avr/pgmspace.h&gt;<br>"
+        + "<br>#define FONT_WIDTH  " + $("#width-size").val()
+        + "<br>#define FONT_HEIGHT " + $("#height-size").val()
+        + "<br><br>static const uint8_t font_data[] PROGMEM = {<br>"
+        + fontSetCodehtml + "<br>};</code></pre>");
     }
-    $("#font-set-code").html("<pre><code>/*<br>Design you own font:<br>https://github.com/moononournation/Font-Stuff/tree/master/FontDesignHtml<br>"
-    	+ "<br>fontsetvalue:<br>" + fontSetValue
-		+ "<br>*/<br>#include &lt;avr/pgmspace.h&gt;<br>"
-		+ "<br>#define FONT_WIDTH  " + $("#width-size").val()
-		+ "<br>#define FONT_HEIGHT " + $("#height-size").val()
-		+ "<br><br>static const uint8_t font_data[] PROGMEM = {<br>"
-		+ fontSetCodehtml + "<br>};</code></pre>");
-    $('pre code').each(function(i, block) {
-      hljs.highlightBlock(block);
-    });
-  }
   </script>
 </head>
+
 <body>
   <div>
     <p>
@@ -251,4 +251,5 @@
     <div id="font-set-code"></div>
   </div>
 </body>
+
 </html>
