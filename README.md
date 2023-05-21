@@ -8,3 +8,7 @@ http://www.instructables.com/id/Display-Colorful-Message-in-Limited-Resources/
 Example for using customized font
 ### docs
 Html base tools for design your own font, you can download and run in local browser
+
+Or you can access at GitHub Pages:
+- [FontDesign](http://moononournation.github.io/Font-Stuff/FontDesign.html)
+- [HalftoneFontDesign](http://moononournation.github.io/Font-Stuff/HalftoneFontDesign.html)
